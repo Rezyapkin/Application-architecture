@@ -2,16 +2,14 @@
 
 namespace DBConnection;
 
-class PostgreSQLConnection extends DBConnection {
+class MySQLConnection extends DBConnection {
 
     public function getDSNString() {
         return sprintf(
-            "pgsql:host=%s;dbname=%s;charset=%s",
+            "mysql:host=%s;dbname=%s;charset=%s",
             $this->configConnection['host'],
             $this->configConnection['database'],
-            $this->configConnection['charset']
-        );
-        
+            $this->configConnection['charset']);
     }
 
 }

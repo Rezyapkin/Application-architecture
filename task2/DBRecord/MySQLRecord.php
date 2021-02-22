@@ -8,4 +8,5 @@ class MySQLRecord extends DBRecord {
         return "MySQL-запрос для сохранения записи<br>";
     }
 
+
 }

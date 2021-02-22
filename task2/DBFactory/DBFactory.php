@@ -4,18 +4,18 @@ namespace DBFactory;
 
 abstract class DBFactory{
 
-    private $connection = null;
-    private $queryBuilder = null;
-    private $configConnection = [];
+    protected $connection = null;
+    protected $queryBuilder = null;
+    protected $configConnection = [];
 
     public function __construct(array $configConnection) {
         $this->configConnection = $configConnection;
-        $this->$connection = $this->createConnection($configConnection);
-        $this->$queryBuilder = $this->createQueryBuilder();
+        $this->connection = $this->createConnection($configConnection);
+        $this->queryBuilder = $this->createQueryBuilder();
     }
 
     public function query() {
-        return $this->$queryBuilder;
+        return $this->queryBuilder;
     }
 
     abstract public function createConnection(array $configConnection);

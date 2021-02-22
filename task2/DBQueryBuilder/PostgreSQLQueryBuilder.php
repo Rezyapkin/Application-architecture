@@ -2,7 +2,7 @@
 
 namespace DBQueryBuilder;
 
-class PostgreSQLQueryBuilder extends DBQueryBuilder\DBQueryBuilder {
+class PostgreSQLQueryBuilder extends DBQueryBuilder {
 
 // Если буду какие-либо особенности диалекта PostgreSQL, то заменим реализацию тут!
 

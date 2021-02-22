@@ -8,8 +8,8 @@ use DBConnection\DBConnection;
 class DBQueryBuilder {
     private $connection=null;
 
-    public function __constructor(DBConnection $connection) {
-        $this->$connection = $connection;
+    public function __construct(DBConnection $connection) {
+        $this->connection = $connection;
     }
 
     public function getAllFromTable($table) {
