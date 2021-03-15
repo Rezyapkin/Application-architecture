@@ -2,7 +2,7 @@
 
 namespace task1;
 
-class HadHunter {
+class HandHunter {
 
     public function __construct() {
         $this->vacancy = [];
