@@ -3,12 +3,14 @@
 function findPrimeDivisors($value) {
     $stack = new SplStack();
     $n = 2;
-    while ($n <= $value) {
+    while ($n ** 2 <= $value) {
         if ($value % $n === 0) {
             if ($stack->count() === 0 or $stack->top() < $n) $stack->push($n);
             $value /= $n;
         } else $n++;
     }    
+    
+    if ($stack->count() === 0 or $stack->top() < $value) $stack->push($value);
 
     return $stack;
 }
