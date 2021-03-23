@@ -71,7 +71,6 @@ class BinaryTree
         }
 
         $node = &$this->findNode($int, $this->root);
-        
         if ($node) {
             $this->deleteNode($node);
         } else {
@@ -105,14 +104,29 @@ class BinaryTree
         // [1 2 3 4 5] 7 [ 8 9 10]
 
         else {
-            if (is_null($node->right->left)) {
-                $node = $node->left;
-            } else {
-                $node->value = $node->right->left->value;
-                $this->deleteNode($node->right->left);
-            }
+            $left = is_null($node->left) ? null : $this->getMaxDepthRight($node->left);
+            $right= is_null($node->right) ? null : $this->getMaxDepthLeft($node->right);
+            $newNode = (is_null($left) or is_null($right)) ? ($left or $right) : ($left->value > $right->value ? $left : $right);
+            $node->value - $newNode->value;
+            $newNode = null;
         }
 
+    }
+
+    private function getMaxDepthRight(?BinaryNode &$node) {
+        if (is_null($node->right)) {
+            return $node;
+        } else {
+            return $this->getMaxDepthRight($node->right);
+        }
+    }
+
+    private function getMaxDepthLeft(?BinaryNode &$node) {
+        if (is_null($node->left)) {
+            return $node;
+        } else {
+            return $this->getMaxDepthLeft($node->left);
+        }
     }
 
     public function bypass(string $type) {
