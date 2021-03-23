@@ -106,7 +106,7 @@ class BinaryTree
 
         else {
             if (is_null($node->right->left)) {
-                $node -> $node->left;
+                $node = $node->left;
             } else {
                 $node->value = $node->right->left->value;
                 $this->deleteNode($node->right->left);
