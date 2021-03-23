@@ -33,6 +33,25 @@ class BinaryTree
         }
     }
 
+    public function cloneTree() {
+        $root = $this->cloneNode($this->root);
+        $newTree = new BinaryTree;
+        $newTree->root = $root;
+        return $newTree;
+    }
+
+    public function cloneNode($node) {
+        if (is_null($node)) {
+            return null;
+        } else {
+            $clone = clone $node;
+            $clone->left = $this->cloneNode($node->left);
+            $clone->right = $this->cloneNode($node->right);
+            return $clone;
+        }
+    }
+    
+
     private function insertNode(BinaryNode $node, &$rootSubtree)
     {
         if ($rootSubtree === null) {
@@ -46,12 +65,13 @@ class BinaryTree
 
     public function delete(int $int)
     {
+
         if ($this->root === null) {
             throw new Exception("Дерево пустое");
         }
 
         $node = &$this->findNode($int, $this->root);
-
+        
         if ($node) {
             $this->deleteNode($node);
         } else {
@@ -72,7 +92,7 @@ class BinaryTree
 
     }
 
-    private function deleteNode(BinaryNode $node)
+    private function deleteNode(BinaryNode &$node)
     {
         if (is_null($node->right) && is_null($node->left)) {
             $node = null;

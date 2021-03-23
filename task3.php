@@ -9,10 +9,11 @@ class CompareTree {
     }
 
     private static function compareNode(?BinaryNode $node1, ?BinaryNode $node2):bool {
-        if ($node1 !== $node2) {
+
+        if (is_null($node1) || is_null($node2)) {
+            return is_null($node1) && is_null($node2);
+        } elseif ($node1->value !== $node2->value) {
             return False;
-        } elseif (is_null($node1)) {
-            return True;
         }
 
         return self::compareNode($node1->left, $node2->left) && self::compareNode($node1->right, $node2->right); 
@@ -21,7 +22,8 @@ class CompareTree {
 
 }
 
-$tree2 = clone $tree;
+
+$tree2 = $tree->cloneTree();
 echo "<h2>Дерево 1</h2>";
 var_dump($tree);
 echo "<h2>Дерево 2</h2>";
